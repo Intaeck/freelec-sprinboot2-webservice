@@ -31,6 +31,13 @@ repositories {
 //프로젝트 개발에 필요한 의존성 선언 - 버젼을 명시하지 않아야 맨위의 스프링부트버젼을 따라감
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.projectlombok:lombok')
+    // 스프링부트용 Spring data jpa 추상화 라이브러리 (스프링부트 버전에 맞춰 자동으로 JPA관련 라이브러리 버전 관리)
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    // h2: 인메모리 관계형 데이터 베이스 (별도 설치 없이 프로젝트 의존성만으로 관리 가능)
+    compile('com.h2database:h2')
+    // mustache
+    compile('org.springframework.boot:spring-boot-starter-mustache')
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
