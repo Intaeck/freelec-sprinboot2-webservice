@@ -35,7 +35,7 @@ var index = {
             alert('글이 등록되었습니다.');
             window.location.href = '/';
         }).fail(function (error) {
-            allert(JSON.stringify(error));
+            alert(JSON.stringify(error));
         });
     },
 
