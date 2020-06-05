@@ -17,6 +17,8 @@
             <!-- 해당값이 존재하지 않는 경우에는 ^를 사용 , userName이 없다면 로그인 버튼을 노출 -->
             {{^userName}}
                 <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a>
+
+                <a href="/oauth2/authorization/naver" class="btn btn-secondary active" role="button">Naver Login</a>
             {{/userName}}
         </div>
     </div>

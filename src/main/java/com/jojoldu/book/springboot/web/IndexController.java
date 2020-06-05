@@ -52,6 +52,7 @@ public class IndexController {
 
     //게시글 수정 - index.mustache 에서 호출
     @GetMapping("/posts/update/{id}")
+    //@PathVariable은 URL경로로 넘어온 변수인 {id}값을 받아줌
     public String postUpdate(@PathVariable Long id, Model model) {
         PostsResponseDto dto = postsService.findById(id);
         model.addAttribute("post", dto);

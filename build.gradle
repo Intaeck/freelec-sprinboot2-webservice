@@ -40,6 +40,10 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-mustache')
     // 스프링 시큐리티 설정 (oauth2)
     compile('org.springframework.boot:spring-boot-starter-oauth2-client')
+    // 세션을 위한 jdbc 설정
+    compile('org.springframework.session:spring-session-jdbc')
+    // 스프링 시큐리티 테스트를 위한 도구
+    testCompile("org.springframework.security:spring-security-test")
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
