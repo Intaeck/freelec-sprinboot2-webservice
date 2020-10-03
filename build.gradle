@@ -42,6 +42,8 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-oauth2-client')
     // 세션을 위한 jdbc 설정
     compile('org.springframework.session:spring-session-jdbc')
+    //ec2 mariadb
+    compile("org.mariadb.jdbc:mariadb-java-client")
     // 스프링 시큐리티 테스트를 위한 도구
     testCompile("org.springframework.security:spring-security-test")
     testCompile('org.springframework.boot:spring-boot-starter-test')
