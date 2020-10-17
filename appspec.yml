@@ -1,3 +1,5 @@
+# version: 0.0 오타시 에러발생
+# ->The deployment failed because an invalid version value () was entered in the application specification file. Make sure your AppSpec file specifies "0.0" as the version, and then try again.
 version: 0.0
 os: linux
 files:
@@ -5,3 +7,18 @@ files:
   - source: /
     destination: /home/ec2-user/app/step2/zip/
     overwrite: yes
+# CodeDeploy에서 EC2 서버로 넘겨준 파일들은 모두 ec2-user 권한을 갖도록 설정
+
+permission:
+  - object: /
+    pattern: "**"
+    owner: ec2-user
+    group: e2-user
+
+# CodeDeploy 배포 단계에서 실행할 명령어를 지정
+# ApplicationStart라는 단계에서 deploy.sh를 ec20-user 권한으로 실행하게 함
+hooks:
+  ApplicationStart:
+    - location: deploy.sh
+      timeout: 60
+      runas: ec2-user

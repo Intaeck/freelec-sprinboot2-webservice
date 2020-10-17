@@ -21,10 +21,22 @@ script: "./gradlew clean build"
 #deploy 명령어가 실행전에 수행됨.
 #AWS CodeDeploy는 Jar파일은 인식하지 못하므로 Jar+기타 설정파일들을 모아서 zip 파일로 압축해줌
 before_deploy:
-  #현재 위치의 모든 파일을 zip으로 압축 - 명령어의 마지막 위치는 본인의 프로젝트 이름이여야 함
-  - zip -r freelec-sprinboot2-webservice *
-  - mkdir -p deploy
-  - mv freelec-sprinboot2-webservice.zip deploy/freelec-springboot2-webservice.zip
+  ##현재 위치의 모든 파일을 zip으로 압축 - 명령어의 마지막 위치는 본인의 프로젝트 이름이여야 함
+  #- zip -r freelec-sprinboot2-webservice *
+  #- mkdir -p deploy
+  #- mv freelec-sprinboot2-webservice.zip deploy/freelec-springboot2-webservice.zip
+  # Travis->CodeDeploy 자동화를 위한 명령
+  - mkdir -p before-deploy  # zip에 포함시킬 파일들을 담을 디렉토리 생성 (디렉토리 단위로만 업로드 가능하므로 항상 생성)
+  # zip파일에 포함시킬 파일들을 저장
+  - cp scripts/*.sh before-deploy/
+  - cp appspec.yml before-deploy/
+  - cp build/libs/*.jar before-deploy/
+  # before-deploy로 이동 후 전체 압축
+  - cd before-deploy && zip -r before-deploy *
+  # 상위 디렉토리로 이동 후 deploy 디렉토리 생성
+  - cd ../ && mkdir -p deploy
+  # deploy로 zip파일 이동 (s3로 옮길 파일)
+  - mv before-deploy/before-deploy.zip deploy/freelec-springboot2-webservice.zip
 
 #S3로 파일 업로드 혹은 CodeDeploy로 배포 등 외부 서비스와 연동될 행위들을 선언
 deploy:
