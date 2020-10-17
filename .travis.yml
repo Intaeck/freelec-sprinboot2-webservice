@@ -47,7 +47,7 @@ deploy:
     bundle_type: zip  #압축 확장자
     application: diveme-springboot-webservice  #AWS에서 등록한 CodeDeploy 애플리케이션 이름
     deployment_group: diveme-springboot-webservice #AWS에서 등록한 CodeDeploy 배포그룹 이름
-    region: ap-northeaset-2
+    region: ap-northeast-2
     wait-until-deployed: true
 
 # Travis CI 실행 완료 시 메일로 알람
