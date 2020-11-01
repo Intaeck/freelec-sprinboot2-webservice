@@ -6,7 +6,7 @@ files:
   # CodeDeploy에서 전달해 준 파일 중 destination으로 이동시킬 대상 (/ 루트경로를 지정하면 전체파일 대상)
   - source: /
     #destination: /home/ec2-user/app/step2/zip/
-    distination: /home/ec2-user/app/step3/zip/
+    destination: /home/ec2-user/app/step3/zip/
     overwrite: yes
 # CodeDeploy에서 EC2 서버로 넘겨준 파일들은 모두 ec2-user 권한을 갖도록 설정
 
